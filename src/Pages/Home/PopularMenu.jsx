@@ -4,6 +4,7 @@ import MenuItem from '../../Shared/MenuItem/MenuItem';
 
 const PopularMenu = () => {
     const [menu, setMenu] = useState([]);
+    const [showAll, setShowAll] = useState(false);
     useEffect(() => {
         fetch('menu.json')
             .then(res => res.json())
@@ -12,6 +13,7 @@ const PopularMenu = () => {
                 setMenu(popularItems)
             })
     }, [])
+    const displayItems = showAll ? menu : menu.slice(0, 6);
     return (
         <div className="md:px-36 px-0 md:py-6 py-0">
             <SectionHeading
@@ -20,14 +22,16 @@ const PopularMenu = () => {
             ></SectionHeading>
             <div className="grid my-10 md:grid-cols-2 gap-10">
                 {
-                    menu.map(item => <MenuItem
+                    displayItems.map(item => <MenuItem
                         key={item._id}
                         item={item}
                     ></MenuItem>)
                 }
             </div>
             <div className="flex justify-center items-center">
-                <button className="btn btn-outline hover:bg-indigo-500  border-b-4 border-indigo-500 border-0 ">View Full Menu</button>
+                <button
+                    onClick={() => setShowAll(true)}
+                    className="btn btn-outline hover:bg-indigo-500  border-b-4 border-indigo-500 border-0 ">View More</button>
             </div>
 
         </div>

@@ -16,7 +16,7 @@ const Recommended = () => {
                     <div className="card-body flex space-y-4 flex-col justify-center items-center bg-[#F3F3F3] ">
                         <h2 className="card-title">Caeser Salad</h2>
                         <p className="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam aperiam ex nostrum similique doloremque. Odit.</p>
-                        <button className="btn btn-outline w-1/2 bg-[#E8E8E8]  uppercase border-b-4 border-0 text-indigo-400">
+                        <button className="btn btn-outline w-1/2 bg-[#E8E8E8]  uppercase border-b-4 border-0 text-indigo-500">
                             Add To cart
                         </button>
                     </div>
@@ -26,7 +26,7 @@ const Recommended = () => {
                     <div className="card-body flex space-y-4 flex-col justify-center items-center bg-[#F3F3F3] ">
                         <h2 className="card-title">Beef Pizza</h2>
                         <p className="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam aperiam ex nostrum similique doloremque. Odit.</p>
-                        <button className="btn btn-outline w-1/2 bg-black  uppercase border-b-4 border-0 text-indigo-400">
+                        <button className="btn btn-outline w-1/2 bg-black  uppercase border-b-4 border-0 text-indigo-500">
                             Add To cart
                         </button>
                     </div>
@@ -36,7 +36,7 @@ const Recommended = () => {
                     <div className="card-body flex space-y-4 flex-col justify-center items-center bg-[#F3F3F3] ">
                         <h2 className="card-title">Corn Soup</h2>
                         <p className="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam aperiam ex nostrum similique doloremque. Odit.</p>
-                        <button className="btn btn-outline w-1/2 bg-[#E8E8E8]  uppercase border-b-4 border-0 text-indigo-400">
+                        <button className="btn btn-outline w-1/2 bg-[#E8E8E8]  uppercase border-b-4 border-0 text-indigo-500">
                             Add To cart
                         </button>
                     </div>
