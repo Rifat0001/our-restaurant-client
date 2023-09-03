@@ -1,17 +1,17 @@
 import Banner from './Banner';
+import CallUs from './CallUs';
 import Category from './Category';
 import PopularMenu from './PopularMenu';
-import Try from './Try';
+import Recommended from './Recommended';
 
-const Home = () => {
-    return (
-        <div>
-            <Banner></Banner>
-            <Category></Category>
-            <PopularMenu></PopularMenu>
-            <Try></Try>
-        </div>
-    );
-};
+const Home = () => (
+    <div>
+        <Banner></Banner>
+        <Category></Category>
+        <PopularMenu></PopularMenu>
+        <CallUs />
+        <Recommended></Recommended>
+    </div>
+);
 
 export default Home;
