@@ -1,7 +1,8 @@
-import SectionHeading from '../../assets/components/SectionHeading';
+
 import reco from '../../assets/home/slide1.jpg'
 import piz from '../../assets/home/slide2.jpg'
 import soup from '../../assets/home/slide3.jpg'
+import SectionHeading from '../../components/SectionHeading';
 const Recommended = () => {
     return (
         <div className="mb-20 md:px-36 px-0 md:py-6 py-0">

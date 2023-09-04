@@ -12,7 +12,7 @@ import slide5 from '../../assets/home/slide5.jpg'
 
 // import required modules
 import { Pagination } from 'swiper/modules';
-import SectionHeading from '../../assets/components/SectionHeading';
+import SectionHeading from '../../components/SectionHeading';
 const Category = () => {
     return (
         <div className='md:px-36 px-0 md:py-6 py-0'>

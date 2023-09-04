@@ -1,5 +1,5 @@
 import feature from '../../assets/home/featured.jpg'
-import SectionHeading from '../../assets/components/SectionHeading';
+import SectionHeading from '../../components/SectionHeading';
 import './Featured.css';
 const Freatured = () => {
     return (

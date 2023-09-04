@@ -1,4 +1,4 @@
-import SectionHeading from "../../assets/components/SectionHeading";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FaQuoteRight } from 'react-icons/fa';
@@ -13,6 +13,7 @@ import '@smastrom/react-rating/style.css'
 // import required modules
 import { Navigation } from 'swiper/modules';
 import { useEffect, useState } from "react";
+import SectionHeading from '../../components/SectionHeading';
 const Testimonial = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
