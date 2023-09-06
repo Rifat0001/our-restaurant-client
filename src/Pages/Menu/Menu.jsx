@@ -14,11 +14,11 @@ const Menu = () => {
 
     console.log(offered)
     return (
-        <div>
+        <div >
             <Helmet>
                 <title>Restro | Menu</title>
             </Helmet>
-            <Cover img={menuBg} title='Our Menu' description='Would you like to try a dish?'></Cover>
+            <Cover className='bg-fixed' img={menuBg} title='Our Menu' description='Would you like to try a dish?'></Cover>
             <div className="md:px-36 px-0">
                 <section>
                     <SectionHeading

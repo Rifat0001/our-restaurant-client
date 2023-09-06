@@ -9,7 +9,7 @@ const Dessert = () => {
     const dessert = menu.filter(item => item.category === 'dessert');
     const displayItems = showAll ? dessert : dessert.slice(0, 6);
     return (
-        <div className="md:py-8 py-4">
+        <div className="md:py-8  py-4">
             <Cover img={chef} title={"Dessert"} description={'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis earum explicabo veniam voluptate. Deserunt provident omnis reiciendis perferendis quae cum praesentium exercitationem dignissimos '}></Cover>
             <div className="grid my-10 md:grid-cols-2 gap-10">
                 {

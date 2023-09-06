@@ -1,6 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     const navOptions = <>
         <li>
             <Link to='/'>Home</Link>
@@ -11,6 +20,10 @@ const Navbar = () => {
         <li>
             <Link to='/order'>Order</Link>
         </li>
+        <li>
+            <Link to='/secret'>Secret</Link>
+        </li>
+
     </>
     return (
         <div>
@@ -32,7 +45,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ? <button onClick={handleLogOut} className="btn bg-indigo-500 hover:bg-indigo-600 border-0 text-white">Log Out <FaSignOutAlt></FaSignOutAlt> </button> :
+                            <Link to='/login'><button className="btn bg-indigo-500 hover:bg-indigo-600 border-0 text-white"><FaSignInAlt></FaSignInAlt> Login</button></Link>
+                    }
                 </div>
             </div>
         </div>

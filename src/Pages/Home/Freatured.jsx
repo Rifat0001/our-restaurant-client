@@ -11,8 +11,10 @@ const Freatured = () => {
                 ></SectionHeading>
 
                 <div className='flex md:mx-32 items-center justify-center gap-10 pb-10 mt-10 text-white'>
-                    <img className='w-[548px] h-[300px] rounded-md' src={feature} alt="" />
-                    <div>
+                    <div className='w-full'>
+                        <img className='rounded-md' src={feature} alt="" />
+                    </div>
+                    <div className='w-full'>
                         <p>March 20,2023</p>
                         <p>Where can i get some?</p>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis veniam neque, error doloremque esse eligendi unde recusandae quas beatae, animi ab provident perspiciatis ipsum repellendus?</p>
@@ -22,7 +24,7 @@ const Freatured = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 
