@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { FaShoppingCart, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -19,6 +19,14 @@ const Navbar = () => {
         </li>
         <li>
             <Link to='/order'>Order</Link>
+        </li>
+        <li>
+            <Link to='/dashboard/mycart'>
+                <button className="flex items-center">
+                    <FaShoppingCart></FaShoppingCart>
+                    <div className="badge ms-1 badge-secondary">0+</div>
+                </button>
+            </Link>
         </li>
         <li>
             <Link to='/secret'>Secret</Link>

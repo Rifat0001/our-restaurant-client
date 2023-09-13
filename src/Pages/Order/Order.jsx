@@ -13,6 +13,10 @@ const Order = () => {
     const salad = menu.filter(item => item.category === 'salad');
     const drinks = menu.filter(item => item.category === 'drinks');
 
+    const handleAddtoCard = (item) => {
+        console.log(item)
+    }
+
     const [selectedTab, setSelectedTab] = useState('popular'); // Default to 'pizza' tab
 
     // Filter the menu items based on the selected tab
@@ -83,7 +87,7 @@ const Order = () => {
                                             <h2 className="font-bold">{item.name}</h2>
                                             <p>{item.recipe}</p>
                                             <div className="card-actions justify-center">
-                                                <button className="btn btn-outline w-1/2 bg-[#E8E8E8]  uppercase border-b-4 border-0 text-indigo-500  hover:bg-indigo-500">
+                                                <button onClick={() => handleAddtoCard(item)} className="btn btn-outline w-1/2 bg-[#E8E8E8]  uppercase border-b-4 border-0 text-indigo-500  hover:bg-indigo-500">
                                                     Add To cart
                                                 </button>
                                             </div>
