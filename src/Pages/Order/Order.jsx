@@ -1,10 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import Cover from '../../Shared/Cover/Cover';
 import order from '../../assets/home/banner.jpg';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Order.css'
 import useMenu from '../../hooks/useMenu';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 const Order = () => {
+    const { user } = useContext(AuthContext);
     const [menu] = useMenu();
     const desserts = menu.filter(item => item.category === 'dessert');
     const popular = menu.filter(item => item.category === 'popular');
@@ -12,9 +16,38 @@ const Order = () => {
     const soup = menu.filter(item => item.category === 'soup');
     const salad = menu.filter(item => item.category === 'salad');
     const drinks = menu.filter(item => item.category === 'drinks');
-
+    const navigate = useNavigate();
     const handleAddtoCard = (item) => {
-        console.log(item)
+        console.log(item);
+        if (user) {
+            fetch('http://localhost:5000/carts')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Food added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'Please login to order the food',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4F46E5',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login Now'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login')
+                }
+            })
+        }
     }
 
     const [selectedTab, setSelectedTab] = useState('popular'); // Default to 'pizza' tab
