@@ -7,8 +7,10 @@ import useMenu from '../../hooks/useMenu';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useCart from '../../hooks/useCart';
 const Order = () => {
     const { user } = useContext(AuthContext);
+    const [, refetch] = useCart();
     const location = useLocation();
     const navigate = useNavigate();
     const [menu] = useMenu();
@@ -20,9 +22,10 @@ const Order = () => {
     const drinks = menu.filter(item => item.category === 'drinks');
 
     const handleAddtoCard = (item) => {
+        const { name, image, price, _id } = item;
         console.log(item);
         if (user && user.email) {
-            const cartItem = { menuItem: __dirname, name, image, price, email: user.email }
+            const cartItem = { menuItem: _id, name, image, price, email: user.email }
             fetch('http://localhost:5000/carts', {
                 method: 'POST',
                 headers: {
@@ -33,6 +36,7 @@ const Order = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
+
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
@@ -40,6 +44,7 @@ const Order = () => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        refetch();
                     }
                 })
         }
