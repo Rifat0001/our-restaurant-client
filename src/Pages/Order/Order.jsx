@@ -5,10 +5,12 @@ import { useContext, useState } from 'react';
 import './Order.css'
 import useMenu from '../../hooks/useMenu';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 const Order = () => {
     const { user } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
     const [menu] = useMenu();
     const desserts = menu.filter(item => item.category === 'dessert');
     const popular = menu.filter(item => item.category === 'popular');
@@ -16,11 +18,18 @@ const Order = () => {
     const soup = menu.filter(item => item.category === 'soup');
     const salad = menu.filter(item => item.category === 'salad');
     const drinks = menu.filter(item => item.category === 'drinks');
-    const navigate = useNavigate();
+
     const handleAddtoCard = (item) => {
         console.log(item);
-        if (user) {
-            fetch('http://localhost:5000/carts')
+        if (user && user.email) {
+            const cartItem = { menuItem: __dirname, name, image, price, email: user.email }
+            fetch('http://localhost:5000/carts', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(cartItem)
+            })
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
@@ -39,12 +48,12 @@ const Order = () => {
                 title: 'Please login to order the food',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#4F46E5',
+                confirmButtonColor: '#6366F1',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Login Now'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate('/login')
+                    navigate('/login', { state: { from: location } })
                 }
             })
         }
