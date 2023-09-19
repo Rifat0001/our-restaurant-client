@@ -14,14 +14,20 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-                navigate(from, { replace: true })
-                Swal.fire({
-                    position: 'top-center',
-                    icon: 'success',
-                    title: 'Loin Successfully',
-                    showConfirmButton: false,
-                    timer: 1500
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
                 })
+                    .then(res => res.json())
+                    .then(() => {
+
+                        navigate(from, { replace: true })
+
+                    })
 
             })
     }
