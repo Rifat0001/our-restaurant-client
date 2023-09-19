@@ -12,21 +12,41 @@ const SignUp = () => {
     const { createUser } = useContext(AuthContext);
     // for navigate user after sign up 
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {
+        register,
+        handleSubmit, reset,
+        formState: { errors },
+    } = useForm();
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-                Swal.fire({
-                    position: 'top-center',
-                    icon: 'success',
-                    title: 'User created Successfully',
-                    showConfirmButton: false,
-                    timer: 1500
+                const saveUser = { name: data.name, email: data.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
                 })
-                navigate('/');
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'top-center',
+                                icon: 'success',
+                                title: 'User created Successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            navigate('/');
+                            reset();
+
+                        }
+                    })
+
             })
     }
     return (
